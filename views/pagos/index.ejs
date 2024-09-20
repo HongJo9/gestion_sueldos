@@ -1,0 +1,27 @@
+<!-- views/pagos/index.ejs -->
+<% layout('layouts/layout') %>
+
+<h1>Pagos Pendientes</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Departamento</th>
+      <th>Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% empleados.forEach(empleado => { %>
+      <tr>
+        <td><%= empleado.nombre %> <%= empleado.apellido %></td>
+        <td><%= empleado.departamento %></td>
+        <td>
+          <form action="/pagos/pagar/<%= empleado._id %>" method="POST">
+            <input type="number" name="monto" placeholder="Monto" required />
+            <button type="submit">Pagar</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

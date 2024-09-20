@@ -1,0 +1,14 @@
+<h2>Notificaciones</h2>
+<ul>
+  <% jefe.modulo_notificaciones.forEach(notificacion => { %>
+  <li>
+    <%= notificacion.mensaje %> - <%= notificacion.fecha.toLocaleDateString() %>
+    <% if (!notificacion.visto) { %>
+    <strong>(Nuevo)</strong>
+    <% } %>
+  </li>
+  <% }) %>
+</ul>
+<form action="/jefes/notificaciones/visto" method="POST">
+  <button type="submit">Marcar todas como vistas</button>
+</form>
